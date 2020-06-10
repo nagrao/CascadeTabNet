@@ -14,8 +14,8 @@ import glob
 ##epoch = 'epoch_file.name'
 ##############################
 
-image_path = '/content/images/*.*'
-xmlPath = '/content/xml/'
+image_path = '/content/drive/My Drive/cascade/scans/*.*'
+xmlPath = '/content/drive/My Drive/cascade/xml/'
 
 config_fname =  '/content/CascadeTabNet/Config/cascade_mask_rcnn_hrnetv2p_w32_20e.py'
 checkpoint_path = "/content/"
@@ -57,7 +57,10 @@ for i in imgs:
     if len(res_bless) != 0:
         if len(res_cell) != 0:
             for no,res in enumerate(res_bless):
-                root.append(borderless(res,cv2.imread(i),res_cell))
+                try:
+                    root.append(borderless(res,cv2.imread(i),res_cell))
+                except:
+                    print("exception in " + i)
 
     myfile = open(xmlPath+i.split('/')[-1][:-3]+'xml', "w")
     myfile.write('<?xml version="1.0" encoding="UTF-8"?>\n')

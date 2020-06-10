@@ -1,5 +1,6 @@
 import cv2
 from Functions.line_detection import line_detection
+from google.colab.patches import cv2_imshow
 
 ##################  Functions required for Border table Recognition #################
 
