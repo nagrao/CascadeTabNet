@@ -1,5 +1,6 @@
 import cv2
 import numpy as np
+from google.colab.patches import cv2_imshow
 
 # Input : Image
 # Output : hor,ver 
@@ -9,7 +10,7 @@ def line_detection(image):
     bw = cv2.adaptiveThreshold(gray, 255, cv2.ADAPTIVE_THRESH_MEAN_C, cv2.THRESH_BINARY, 15, 1)
     bw = cv2.bitwise_not(bw)
     ## To visualize image after thresholding ##
-    cv2.imshow("bw",bw)
+    cv2_imshow(bw)
     cv2.waitKey(0)
     ###########################################
     horizontal = bw.copy()
