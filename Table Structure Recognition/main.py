@@ -4,6 +4,7 @@ import cv2
 from Functions.blessFunc import borderless
 import lxml.etree as etree
 import glob
+import os
 
 ############ To Do ############
 ##image_path = 'path to directory of images'
@@ -62,7 +63,7 @@ for i in imgs:
                 except:
                     print("exception in " + i)
 
-    myfile = open(xmlPath+i.split('/')[-1][:-3]+'xml', "w")
+    myfile = open(os.path.splitext(xmlPath+i.split('/')[-1])[0]+'.xml', "w")
     myfile.write('<?xml version="1.0" encoding="UTF-8"?>\n')
     myfile.write(etree.tostring(root, pretty_print=True,encoding="unicode"))
     myfile.close()
